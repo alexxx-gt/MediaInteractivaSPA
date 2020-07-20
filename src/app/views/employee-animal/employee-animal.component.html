@@ -1,10 +1,13 @@
 <div class="full_size flex">
     <div class="list_container flex flex_column">
-        <employee-list-item firstName="Item1" lastName="Item1"></employee-list-item>
-        <employee-list-item firstName="Item1" lastName="Item1"></employee-list-item>
-        <employee-list-item  firstName="Item1" lastName="Item1"></employee-list-item>
+        <employee-list-item 
+            *ngFor="let employee of employees" 
+            [firstName]="employee.firstName" 
+            [lastName]="employee.lastName" 
+            (click)="employeeClicked(employee.id)">
+        </employee-list-item>
     </div>
-    <div class="right_container">
-
+    <div class="right_container" style="width: 100%;">
+        <employee-animal-details [employee]="employee" [animals]="animals"></employee-animal-details>
     </div>
 </div>

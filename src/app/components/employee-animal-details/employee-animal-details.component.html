@@ -1,0 +1,40 @@
+<div class="flex flex_column flex_align_center flex_center_self">
+    <h2 *ngIf="employee !== undefined">{{employee.firstName}} {{employee.lastName}}</h2>
+    <h3 *ngIf="employee !== undefined">Is MediaInteractiva employee: {{isEmployee}}</h3>
+    
+    <table border="1" style="width: 40%;">
+        <tr>
+            <td>Pet name</td>
+            <td>Pet type</td>
+        </tr>
+        <tr *ngFor="let pet of animals">
+            <td>{{pet.name}}</td>
+            <td>{{convertPetType(pet.type)}}</td>
+        </tr>
+    </table>
+    
+    
+    <div style="margin-top: 30px;">
+        Add new pet:
+    </div>
+
+    <form [formGroup]="petForm" (ngSubmit)="onSubmit(petForm.value)">
+        <div>
+            <label for="name">
+              Name
+            </label>
+            <input id="name" type="text" formControlName="name">
+          </div>
+          <div>
+            <label for="name">
+              Type
+            </label>
+            <select name="type" id="type" formControlName="type">
+                <option *ngFor="let type of petTypes" [value]="type.code">{{type.type}}</option>
+            </select>
+          </div>
+
+          <button class="button" type="submit">Add new pet</button>
+    </form>
+
+</div>

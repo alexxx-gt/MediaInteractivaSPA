@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { EmployeeService } from './services/employee.service';
 import { AnimalService } from './services/animal.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIInterceptor } from './infrastructure/api.interceptor';
+import { EmployeeAnimalModule } from './views/employee-animal/employee-animal.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,9 @@ import { APIInterceptor } from './infrastructure/api.interceptor';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // EmployeeAnimalModule
   ],
   providers: [
     AnimalService,
@@ -34,6 +39,7 @@ import { APIInterceptor } from './infrastructure/api.interceptor';
       multi: true,
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

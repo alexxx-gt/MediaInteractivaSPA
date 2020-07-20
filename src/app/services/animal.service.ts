@@ -9,8 +9,8 @@ export class AnimalService {
 
     }
 
-    public getList() {
-        return this.http.get('api/animal')
+    public getList(employeeId: number) {
+        return this.http.get(`api/animal?employeeId=${employeeId}`)
     }
 
     public get(id: number) {
